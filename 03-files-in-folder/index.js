@@ -11,8 +11,10 @@ fs.readdir(directoryPath,
   else {
     files.forEach(file => {
         fs.stat(directoryPath2+file.name, (err, stats) => {
+          if (stats.isFile()){
           let f=path.extname(file.name).slice(1)
           console.log( path.basename(file.name,path.extname(file.name))+' - '+f+' - '+stats.size+'b' );
+          }
         })
         
      })
