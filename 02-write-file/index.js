@@ -27,4 +27,6 @@ process.stdin.on('data',function(data){
 process.on('exit', (code) => {
   console.log(`Good bye.`);
 });
+
+process.on('SIGINT', () => process.exit());
 ask()
