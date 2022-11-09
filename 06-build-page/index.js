@@ -45,6 +45,9 @@ let pathht= path.join(__dirname, path.sep,'template.html')
             if(arr[i].trim()==='{{footer}}'){
               arr[i]=res['footer']
             }
+            if(arr[i].trim()==='{{about}}'){
+                arr[i]=res['about']
+              }
           }
         fs.writeFile(writeableStream,arr.join(''), (err)=>{
         if(err){
