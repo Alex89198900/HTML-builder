@@ -92,6 +92,38 @@ let pathht= path.join(__dirname, path.sep,'template.html')
   });
 const directoryPath3 = path.join(__dirname,  './assets/');
 const directoryPath4 = path.join(pathBandle, '/assets');
+
+
+fs.readdir(directoryPath4, (err, files) => {
+  for(let i=0;i<files.length;i++){
+    
+    
+    let puty2= path.join(directoryPath4, files[i]+'/');
+    let fayl=files[i]
+    fs.readdir(puty2, (err,files ) => {
+    
+      files.forEach((file, index) => {
+        if (!path.extname(file)) {
+         return;
+        }
+        let newName = file;
+        
+      
+        fs.unlink(path.join(puty2, file), err => {
+          if (err) 
+          return;
+        });
+       });
+     console.log(files[i])
+
+
+      
+    });
+    
+  }
+ });
+
+
 fs.readdir(directoryPath3, (err, files) => {
     for(let i=0;i<files.length;i++){
       fs.mkdir(path.join(directoryPath4, files[i]), (err) => {
@@ -110,6 +142,7 @@ fs.readdir(directoryPath3, (err, files) => {
            return;
           }
           let newName = file;
+          
         
           fs.copyFile(puty+ file,  puty2+newName, err => {
            if (err) {
